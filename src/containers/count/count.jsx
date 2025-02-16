@@ -21,20 +21,33 @@ const Count = () => {
   const [pageStart, setPageStart] = useState(0);
   const handleChanePage = (e) => {
     const newNum = Number(e.target.textContent) - 1;
-    console.log(newNum * initialPageData);
+    // console.log(newNum * initialPageData);
     setPageStart(newNum * initialPageData);
   };
 
   return (
     <div>
-      <p>count: {count}</p>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
+      <div
+        style={{
+          marginBottom: "10px",
+        }}
+      >
+        <p>count: {count}</p>
+        <button
+          onClick={() => dispatch(increment())}
+          style={{ marginRight: "5px" }}
+        >
+          Increment
+        </button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
+      </div>
       <div
         style={{
           display: "flex",
           justifyContent: "left",
           alignItems: "center",
+          boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.2)",
+          marginBottom: "20px",
         }}
       >
         {data?.slice(pageStart, pageStart + initialPageData).map((ele) => {
@@ -46,7 +59,9 @@ const Count = () => {
                 color: "#000",
                 width: "500px",
                 height: "300px",
+                overflow: "auto",
                 marginRight: "15px",
+                boxShadow: "inset 0px 4px 6px rgba(0, 0, 0, 0.3)",
               }}
             >
               <h4>{ele?.title}</h4>
